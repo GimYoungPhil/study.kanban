@@ -18,7 +18,7 @@
 
 ## 1.6 Browserify
 
-[Browserify](http://browserify.org/)
+[Browserify](http://browserify.org/) : bundling
 
 ## 1.7 Webpack
 
