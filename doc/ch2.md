@@ -360,7 +360,7 @@ const common = {
   module: {
     loaders: [
       {
-        test: /.css$/,
+        test: /\.css$/,
         loaders: ['style', 'css'],
         include: PATHS.app
       }
