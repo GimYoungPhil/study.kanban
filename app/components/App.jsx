@@ -34,14 +34,14 @@ export default class App extends React.Component {
   }
   addNote = () => {
     NoteActions.create({task: 'New task'});
-  };
+  }
   editNote = (id, task) => {
     if (!task.trim()) {
       return;
     }
 
     NoteActions.update({id, task});
-  };
+  }
   deleteNote = (id, e) => {
     e.stopPropagation();
 
