@@ -11,3 +11,5 @@
 ## 8.5 Separating CSS
 
 ## 8.6 Analyzing Build Statistics
+
+## 8.7 Deployment
