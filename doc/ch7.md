@@ -5,3 +5,5 @@
 ## 7.2 Preparing Notes to Be Sorted
 
 ## 7.3 Allowing Notes to Be Dragged
+
+## 7.4 Developing `onMove` API for `Notes`
