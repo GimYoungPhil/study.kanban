@@ -1,6 +1,7 @@
 import React from 'react';
 import AltContainer from 'alt-container';
 import LaneActions from '../actions/LaneActions';
+import Editable from './Editable.jsx';
 import Notes from './Notes.jsx';
 import NoteActions from '../actions/NoteActions';
 import NoteStore from '../stores/NoteStore';
@@ -10,12 +11,16 @@ export default class Lane extends React.Component{
     const {lane, ...props} = this.props;
     return (
       <div {...props}>
-        <div className="lane-header">
+        <div className="lane-header" onClick={this.activateLaneEdit}>
           <div className="lane-add-note">
             <button onClick={this.addNote}>+</button>
           </div>
-          <div className="lane-name">
-            {lane.name}
+          <Editable className="lane-name"
+            editing={lane.editing}
+            value={lane.name}
+            onEdit={this.editName}/>
+          <div className="lane-delete">
+            <button onClick={this.deleteLane}>x</button>
           </div>
         </div>
         <AltContainer
@@ -25,19 +30,22 @@ export default class Lane extends React.Component{
           }}
         >
           <Notes
+            onValueClick={this.activateNoteEdit}
             onEdit={this.editNote}
-            onDelete={this.deleteNote}
-          />
+            onDelete={this.deleteNote}>
+          </Notes>
         </AltContainer>
       </div>
     );
   }
   editNote(id, task) {
     if (!task.trim()) {
+      NoteActions.update({id, editing: false});
+
       return;
     }
 
-    NoteActions.update({id, task});
+    NoteActions.update({id, task, editing: false});
   }
   deleteNote = (noteId, e) => {
     e.stopPropagation();
@@ -48,6 +56,8 @@ export default class Lane extends React.Component{
     NoteActions.delete(noteId);
   };
   addNote = (e) => {
+    e.stopPropagation();
+
     const laneId = this.props.lane.id;
     const note = NoteActions.create({task: 'New task'});
 
@@ -56,4 +66,33 @@ export default class Lane extends React.Component{
       laneId
     });
   };
+  editName = (name) => {
+    const laneId = this.props.lane.id;
+
+    if (!name.trim()) {
+      LaneActions.update({id: laneId, editing: false});
+
+      return;
+    }
+
+    LaneActions.update({id: laneId, editing: false});
+    console.log(`edit lane ${laneId} name using ${name}`);
+  };
+  deleteLane = () => {
+    const laneId = this.props.lane.id;
+
+    LaneActions.delete(laneId);
+    console.log(`delete lane ${laneId}`);
+  };
+  activateLaneEdit = () => {
+    const laneId = this.props.lane.id;
+
+    LaneActions.update({id: laneId, editing: true});
+    console.log(`activate lane ${laneId} edit`);
+  };
+  activateNoteEdit(id) {
+
+    NoteActions.update({id, editing: true});
+    console.log(`activate note ${id} edit`);
+  }
 }
