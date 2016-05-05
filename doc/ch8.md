@@ -7,3 +7,5 @@
 ## 8.3 Generating `index.html` through `html-webpack-plugin`
 
 ## 8.4 Cleaning the Build
+
+## 8.5 Separating CSS
