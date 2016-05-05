@@ -1,6 +1,6 @@
 import uuid from 'node-uuid';
 import alt from '../libs/alt';
-import LaneActons from '../actions/LaneActions';
+import LaneActions from '../actions/LaneActions';
 
 class LaneStore {
   constructor() {
@@ -9,9 +9,10 @@ class LaneStore {
     this.lanes = [];
   }
   create(lane) {
-    const this.lanes;
+    const lanes = this.lanes;
 
     lane.id = uuid.v4();
+    lane.notes = lane.notes || [];
 
     this.setState({
       lanes: lanes.concat(lane)
