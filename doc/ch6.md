@@ -9,3 +9,5 @@
 ## 6.4 Implementing Edit/Remove for `Lane`
 
 ## 6.5 Styling Kanban Board
+
+## 6.6 On Namespacing Components
