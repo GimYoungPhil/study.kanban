@@ -1,5 +1,6 @@
 import React from 'react';
 import AltContainer from 'alt-container';
+import LaneActions from '../actions/LaneActions';
 import Notes from './Notes.jsx';
 import NoteActions from '../actions/NoteActions';
 import NoteStore from '../stores/NoteStore';
@@ -20,7 +21,7 @@ export default class Lane extends React.Component{
         <AltContainer
           stores={[NoteStore]}
           inject={{
-            notes: () => NoteStore.getState().notes
+            notes: () => NoteStore.getNotesByIds(lane.notes)
           }}
         >
           <Notes
@@ -38,12 +39,21 @@ export default class Lane extends React.Component{
 
     NoteActions.update({id, task});
   }
-  deleteNote(id, e) {
+  deleteNote = (noteId, e) => {
     e.stopPropagation();
 
-    NoteActions.delete(id);
-  }
-  addNote() {
-    NoteActions.create({task: 'New task'});
-  }
+    const laneId = this.props.lane.id;
+
+    LaneActions.detachFromLane({laneId, noteId});
+    NoteActions.delete(noteId);
+  };
+  addNote = (e) => {
+    const laneId = this.props.lane.id;
+    const note = NoteActions.create({task: 'New task'});
+
+    LaneActions.attachToLane({
+      noteId: note.id,
+      laneId
+    });
+  };
 }
