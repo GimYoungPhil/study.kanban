@@ -9,3 +9,5 @@
 ## 7.4 Developing `onMove` API for `Notes`
 
 ## 7.5 Adding Action and Store Method for Moving
+
+## 7.6 Implementing Note Drag and Drop Logic
