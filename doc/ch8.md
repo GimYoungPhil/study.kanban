@@ -9,3 +9,5 @@
 ## 8.4 Cleaning the Build
 
 ## 8.5 Separating CSS
+
+## 8.6 Analyzing Build Statistics

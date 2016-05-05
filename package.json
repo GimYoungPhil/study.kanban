@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "stats": "webpack --profile --json > state.json",
     "build": "webpack",
     "start": "webpack-dev-server"
   },
