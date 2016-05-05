@@ -8,7 +8,7 @@ export default class Editable extends React.Component {
       <div {...props}>
         {editing ? this.renderEdit() : this.renderValue()}
       </div>
-    )
+    );
   }
   renderEdit = () => {
     return (
@@ -19,7 +19,8 @@ export default class Editable extends React.Component {
         autoFocus={true}
         defaultValue={this.props.value}
         onBlur={this.finishEdit}
-        onKeyPress={this.checkEnter}/>
+        onKeyPress={this.checkEnter}>
+      </input>
     );
   };
   renderValue = () => {
@@ -34,6 +35,14 @@ export default class Editable extends React.Component {
       </div>
     );
   };
+  renderDelete = () => {
+    return (
+      <button className="delete"
+        onClick={this.props.onDelete}>
+        x
+      </button>
+    );
+  }
   checkEnter = (e) => {
     if (e.key === 'Enter') {
       this.finishEdit(e);

@@ -11,7 +11,8 @@ export default ({notes, onValueClick, onEdit, onDelete}) => {
           value={note.task}
           onValueClick={onValueClick.bind(null, note.id)}
           onEdit={onEdit.bind(null, note.id)}
-          onDelete={onDelete.bind(null, note.id)}/>
+          onDelete={onDelete.bind(null, note.id)}>
+        </Editable>
       </li>
     )}
     </ul>

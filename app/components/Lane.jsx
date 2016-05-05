@@ -18,7 +18,8 @@ export default class Lane extends React.Component{
           <Editable className="lane-name"
             editing={lane.editing}
             value={lane.name}
-            onEdit={this.editName}/>
+            onEdit={this.editName}>
+          </Editable>
           <div className="lane-delete">
             <button onClick={this.deleteLane}>x</button>
           </div>
@@ -75,7 +76,7 @@ export default class Lane extends React.Component{
       return;
     }
 
-    LaneActions.update({id: laneId, editing: false});
+    LaneActions.update({id: laneId, name, editing: false});
     console.log(`edit lane ${laneId} name using ${name}`);
   };
   deleteLane = () => {
