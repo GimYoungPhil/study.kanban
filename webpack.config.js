@@ -3,6 +3,8 @@ const merge = require('webpack-merge');
 const webpack = require('webpack');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
 
+const pkg = require('./package.json');
+
 const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
   app: path.join(__dirname, 'app'),
@@ -20,7 +22,7 @@ const common = {
   },
   output: {
     path: PATHS.build,
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   module: {
     loaders: [
@@ -62,7 +64,20 @@ if (TARGET === 'start' || !TARGET) {
 
 if (TARGET === 'build') {
   module.exports = merge(common, {
+    entry: {
+      vendor: Object.keys(pkg.dependencies).filter(function(v) {
+        return v !== 'alt-utils';
+      })
+    },
+    output: {
+      path: PATHS.build,
+      filename: '[name].[chunkhash].js',
+      chunkFilename: '[chunkhash].js'
+    },
     plugins: [
+      new webpack.optimize.CommonsChunkPlugin({
+        names: ['vendor', 'manifest']
+      }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': '"production"'
       }),
