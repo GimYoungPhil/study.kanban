@@ -3,3 +3,5 @@
 ## 7.1 Setting Up React DnD
 
 ## 7.2 Preparing Notes to Be Sorted
+
+## 7.3 Allowing Notes to Be Dragged
