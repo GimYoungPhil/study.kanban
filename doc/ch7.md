@@ -7,3 +7,5 @@
 ## 7.3 Allowing Notes to Be Dragged
 
 ## 7.4 Developing `onMove` API for `Notes`
+
+## 7.5 Adding Action and Store Method for Moving

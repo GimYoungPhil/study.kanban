@@ -61,6 +61,9 @@ class LaneStore {
 
     this.setState({lanes});
   }
+  move({sourceId, targetId}) {
+    console.log(`source: ${sourceId}, target: ${targetId}`);
+  }
 }
 
 export default alt.createStore(LaneStore, 'LaneStore');
