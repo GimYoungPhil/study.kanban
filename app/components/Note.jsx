@@ -1,6 +1,5 @@
 import React from 'react';
 
-// export default ({task}) => <div>{task} !</div>
 export default class Note extends React.Component {
   constructor(props) {
     super(props);

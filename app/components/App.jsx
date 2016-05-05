@@ -3,6 +3,8 @@ import Notes from './Notes.jsx';
 import NoteActions from '../actions/NoteActions';
 import NoteStore from '../stores/NoteStore';
 
+import MyTest from './MyTest.jsx';
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +28,7 @@ export default class App extends React.Component {
         <Notes notes={notes}
           onEdit={this.editNote}
           onDelete={this.deleteNote} />
+        <MyTest nameStr={'쿨가이'} ageInt={27}></MyTest>
       </div>
     );
   }
